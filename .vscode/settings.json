@@ -1,0 +1,34 @@
+{
+    "files.eol": "\n",
+    "editor.rulers": [
+        120
+    ],
+    "files.exclude": {
+        "build/": true
+    },
+    "C_Cpp.autoAddFileAssociations": false,
+    "c-cpp-flylint.cppcheck.extraArgs": [
+        "--library=boost",
+        "--enable=all"
+    ],
+    "c-cpp-flylint.clang.enable": false,
+    "c-cpp-flylint.flexelint.enable": false,
+    "c-cpp-flylint.lizard.enable": false,
+    "c-cpp-flylint.clang.blocks": false,
+    "c-cpp-flylint.excludeFromWorkspacePaths": [
+        "build"
+    ],
+    "c-cpp-flylint.standard": [
+        "c23",
+        "c++23"
+    ],
+    "c-cpp-flylint.cppcheck.suppressions": [
+        /* The check if something is used does not work with the plugin which checks on a per-file basis */
+        "unusedFunction",
+        "unusedStructMember"
+    ],
+    "editor.formatOnSave": true,
+    "cmake.configureOnOpen": true,
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.compileCommands": "${config:cmake.buildDirectory}/compile_commands.json"
+}
