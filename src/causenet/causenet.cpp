@@ -70,6 +70,7 @@ size_t Causenet::numEffects(size_t conceptIdx) const noexcept {
 }
 
 void Causenet::jsonlToBinary(const fs::path& inJsonl, fs::path& outBinary) {
+	struct Support {};
 	std::set<std::string> nodes;
 	std::map<std::string, std::map<std::string, uint32_t>> numEdges;
 	{

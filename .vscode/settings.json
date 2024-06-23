@@ -4,7 +4,8 @@
         120
     ],
     "files.exclude": {
-        "build/": true
+        ".data/**": true,
+        "build/**": true
     },
     "C_Cpp.autoAddFileAssociations": false,
     "c-cpp-flylint.cppcheck.extraArgs": [
@@ -30,5 +31,11 @@
     "editor.formatOnSave": true,
     "cmake.configureOnOpen": true,
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "C_Cpp.default.compileCommands": "${config:cmake.buildDirectory}/compile_commands.json"
+    "C_Cpp.intelliSenseCacheSize": 0,
+    "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
+    "C_Cpp.default.compileCommands": "${config:cmake.buildDirectory}/compile_commands.json",
+    "C_Cpp.codeAnalysis.exclude": {
+        "build/**": true,
+        ".data/**": true
+    }
 }

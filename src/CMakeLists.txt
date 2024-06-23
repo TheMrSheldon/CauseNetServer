@@ -42,17 +42,7 @@ FetchContent_MakeAvailable(drogon)
 target_link_libraries(causenet PUBLIC drogon)
 add_dependencies(causenet drogon_ctl)  # Add dependency to their commandline tool since it will be part of our build process
 message (STATUS $<TARGET_FILE:drogon_ctl>)
-add_custom_command(TARGET causenet PRE_BUILD
-  COMMAND ${CMAKE_COMMAND} -E echo 
-  "drogon_ctl is found at $<TARGET_FILE:drogon_ctl>")
-
-# nlohmann::json
-#FetchContent_Declare(json
-#    GIT_REPOSITORY https://github.com/nlohmann/json.git
-#    GIT_TAG v3.11.3
-#)
-#FetchContent_MakeAvailable(json)
-#target_link_libraries(causenet PRIVATE nlohmann_json::nlohmann_json)
+add_custom_command(TARGET causenet PRE_BUILD COMMAND ${CMAKE_COMMAND} -E echo  "drogon_ctl is found at $<TARGET_FILE:drogon_ctl>")
 
 # RapidJSON
 option(RAPIDJSON_BUILD_DOC OFF)
@@ -65,11 +55,3 @@ FetchContent_Declare(json
 FetchContent_MakeAvailable(json)
 target_link_libraries(causenet PRIVATE RapidJSON)
 target_include_directories(causenet PUBLIC ${json_SOURCE_DIR}/include)
-
-#simdjson
-#FetchContent_Declare(json
-#    GIT_REPOSITORY https://github.com/simdjson/simdjson.git
-#    GIT_TAG v3.9.1
-#)
-#FetchContent_MakeAvailable(json)
-#target_link_libraries(causenet PRIVATE simdjson::simdjson)
