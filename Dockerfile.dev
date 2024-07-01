@@ -10,7 +10,7 @@ RUN <<EOF
     apt-get -y install g++ cmake git
 
     # Needed for the dev environment
-    apt-get -y install cppcheck flawfinder doxygen graphviz gdb
+    apt-get -y install clang-format cppcheck flawfinder doxygen graphviz gdb
 
     # For Drogon:
     apt-get install -y libjsoncpp-dev uuid-dev zlib1g-dev libyaml-cpp-dev libssl-dev

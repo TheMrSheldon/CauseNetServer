@@ -1,3 +1,18 @@
+/*#include <causenet/causenet.hpp>
+
+#include <algorithm>
+#include <set>
+#include <vector>
+
+using Causenet = causenet::Causenet;
+
+int main() {
+	auto jsonpath = std::filesystem::current_path() / ".data" / "causenet-full.jsonl";
+	auto binpath = std::filesystem::current_path() / ".data" / "causenet-full-supported.causenet";
+	Causenet::jsonlToBinary(jsonpath, binpath);
+	return 0;
+}*/
+
 #include <drogon/HttpAppFramework.h>
 
 #include <causenet/rest/controller_v1.hpp>
@@ -25,9 +40,6 @@ int main() {
 using causenet::Causenet;
 
 int main(int argc, char* argv[]) {
-	// auto jsonpath = std::filesystem::current_path() / ".data" / "causenet-full.jsonl";
-	auto binpath = std::filesystem::current_path() / ".data" / "causenet-full.causenet";
-	// Causenet::jsonlToBinary(jsonpath, binpath);
 	auto causenet = Causenet::fromFile(binpath);
 	auto deathIdx = causenet.getConceptIdx("death");
 
