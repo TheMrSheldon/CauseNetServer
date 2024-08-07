@@ -29,13 +29,12 @@
         "unusedStructMember"
     ],
     "editor.formatOnSave": true,
-    "cmake.configureOnOpen": true,
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "C_Cpp.intelliSenseCacheSize": 0,
     "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
     "C_Cpp.default.compileCommands": "${config:cmake.buildDirectory}/compile_commands.json",
-    "C_Cpp.codeAnalysis.exclude": {
+    "C_Cpp.files.exclude": {
         "build/**": true,
         ".data/**": true
-    }
+    },
 }

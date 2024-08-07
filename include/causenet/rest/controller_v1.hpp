@@ -57,4 +57,18 @@ namespace causenet::rest::v1 {
 		void
 		getPath(const drogon::HttpRequestPtr& req, DRCallback&& callback, std::string nodeid, std::string targetid);
 	};
+
+	class ClueWeb12 : public drogon::HttpController<ClueWeb12> {
+		using DRCallback = std::function<void(const drogon::HttpResponsePtr&)>;
+
+	private:
+	public:
+		METHOD_LIST_BEGIN
+		ADD_METHOD_TO(ClueWeb12::getEntryContent, "/v1/clueweb/{pageid}/content", drogon::Get);
+		ADD_METHOD_TO(ClueWeb12::getEntryInfo, "/v1/clueweb/{pageid}/info", drogon::Get);
+		METHOD_LIST_END
+
+		void getEntryContent(const drogon::HttpRequestPtr& req, DRCallback&& callback, std::string pageid);
+		void getEntryInfo(const drogon::HttpRequestPtr& req, DRCallback&& callback, std::string pageid);
+	};
 } // namespace causenet::rest::v1

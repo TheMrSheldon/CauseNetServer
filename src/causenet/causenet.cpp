@@ -151,13 +151,13 @@ static void extractConcepts(std::istream& file, std::vector<JSONNode>& nodes) {
 			Support support{.content = std::move(sentence)};
 			if (source["type"] == "wikipedia_infobox") {
 				support.sourceTypeId = SourceType::WikipediaInfobox;
-				support.id = payload["wikipedia_page_id"].GetString();
+				support.id = payload["wikipedia_revision_id"].GetString();
 			} else if (source["type"] == "wikipedia_list") {
 				support.sourceTypeId = SourceType::WikipediaList;
-				support.id = payload["wikipedia_page_id"].GetString();
+				support.id = payload["wikipedia_revision_id"].GetString();
 			} else if (source["type"] == "wikipedia_sentence") {
 				support.sourceTypeId = SourceType::WikipediaSentence;
-				support.id = payload["wikipedia_page_id"].GetString();
+				support.id = payload["wikipedia_revision_id"].GetString();
 			} else if (source["type"] == "clueweb12_sentence") {
 				support.sourceTypeId = SourceType::ClueWeb12Sentence;
 				support.id = payload["clueweb12_page_id"].GetString();

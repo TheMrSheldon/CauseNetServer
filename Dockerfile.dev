@@ -15,6 +15,9 @@ RUN <<EOF
     # For Drogon:
     apt-get install -y libjsoncpp-dev uuid-dev zlib1g-dev libyaml-cpp-dev libssl-dev
     apt-get install -y libsqlite3-dev
+
+    # For reading WARC from ClueWeb12
+    apt-get install -y libboost-iostreams-dev
 EOF
 ########################################################################################################################
 # Create User                                                                                                          #

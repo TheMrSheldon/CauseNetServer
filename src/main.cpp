@@ -1,17 +1,68 @@
-/*#include <causenet/causenet.hpp>
+#include <causenet/causenet.hpp>
+#include <warc.hpp>
+
+#include <boost/iostreams/filter/gzip.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
 
 #include <algorithm>
+#include <filesystem>
+#include <fstream>
 #include <set>
 #include <vector>
 
 using Causenet = causenet::Causenet;
 
-int main() {
-	auto jsonpath = std::filesystem::current_path() / ".data" / "causenet-full.jsonl";
-	auto binpath = std::filesystem::current_path() / ".data" / "causenet-full-supported.causenet";
-	Causenet::jsonlToBinary(jsonpath, binpath);
-	return 0;
+/*std::string getWikipediaPermalink(std::string curId, std::string timestamp) {
+	auto baseUrl = "https://en.wikipedia.org/w";
+	auto url = std::format(
+			"{}/api.php?action=query&prop=revisions&rvprop=timestamp|ids&rvdir=newer&pageids={}&rvstart={}&rvlimit=1",
+			baseUrl, curId, timestamp
+	);
 }*/
+// curId = "35296365"
+// timestamp = "2012-04-02T00:10:59Z"
+/*
+std::string warcId2TrecID(std::filesystem::path cluewebBase) {}
+
+int main() {
+	std::set<std::string> clueWebIds;
+
+	auto causenet = Causenet::fromFile(".data/causenet-full-supported.causenet");
+	for (size_t srcIdx = 0; srcIdx < causenet.numConcepts(); ++srcIdx) {
+		for (auto&& [dstIdx, _] : causenet.getEffects(srcIdx))
+			for (auto&& support : causenet.getSupport(srcIdx, dstIdx))
+				if (support.sourceTypeId == causenet::SourceType::ClueWeb12Sentence)
+					clueWebIds.emplace(support.id);
+		std::cout << "\rNum distinct ClueWeb Records: " << clueWebIds.size() << std::flush;
+	}
+	std::cout << "Num distinct ClueWeb Records: " << clueWebIds.size() << std::endl;
+	std::ofstream out("./warc-record-ids.txt");
+	for (auto&& id : clueWebIds)
+		out << id << std::endl;
+
+	/*warc::v1::WARCRecord record;
+	std::cout << "Mapping WARC Record IDs to ClueWeb12 TREC IDs..." << std::endl;
+	//std::filesystem::path base = "/mnt/ceph/storage/corpora/corpora-thirdparty/corpus-clueweb12/parts";
+	std::filesystem::path base = "/Volumes/storage/corpora/corpora-thirdparty/corpus-clueweb12/parts";
+	size_t progress = 0;
+	for (auto const& path : std::filesystem::recursive_directory_iterator(base)) {
+		std::ifstream file(path.path());
+		assert(file.good());
+		boost::iostreams::filtering_istream stream{boost::iostreams::gzip_decompressor()};
+		stream.push(file);
+		stream >> record;
+		assert(record.entries["WARC-Type"] == "warcinfo");
+		size_t numInArchive = std::strtoull(record.entries["WARC-File-Length"].c_str(), nullptr, 10);
+		for (size_t i = 0; i < numInArchive; ++i) {
+			stream >> record;
+		}
+		std::cout << "\r" << progress << std::flush;
+		++progress;
+	}
+	std::cout << std::endl;
+
+	return 0;*/
+//}
 
 #include <drogon/HttpAppFramework.h>
 
@@ -26,6 +77,30 @@ int main() {
 	drogon::app().run();
 	return 0;
 }
+
+/**
+ * 1. Is this concept fictional or non-fictional
+ * 2. Is thie concept a person or not
+ * ...
+ */
+
+/**
+ * Experiments for filtering:
+ * - Entity Resolution: Use concept name to search in DBPedia or Wikidata
+ * - 
+ * 
+ * None of the above
+ */
+
+/**
+ * Check recall of "Query Interpretations from Entity-Linked Segmentations"
+ * 
+ */
+
+/**
+ * Stepweise approach for the processing steps
+ * 
+ */
 
 #if 0
 #include <causenet/causenet.hpp>
