@@ -50,7 +50,7 @@ if((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND CAUSENET_BUILD_DOCS)
 	find_package(Doxygen REQUIRED)
 
 	## Set Doxygen configuration options (THIS REPLACES THE DOXYFILE!)
-	set(DOXYGEN_PROJECT_BRIEF "One word leads to another.")
+	set(DOXYGEN_PROJECT_BRIEF "Visualizing Causality")
 	set(DOXYGEN_PROJECT_LOGO "causenet_logo.svg")
 	set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/documentation)
 	set(DOXYGEN_STRIP_FROM_PATH "\"include\" \"src\"")

@@ -1,0 +1,42 @@
+########################
+# Build Container      #
+########################
+FROM debian:trixie AS build
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Copy Repo
+RUN mkdir /causenet
+WORKDIR /causenet
+COPY CMakeLists.txt config.dev.yml ./
+COPY src ./src
+COPY include ./include
+
+RUN <<EOF
+# Install dependencies
+apt-get update
+apt-get -y install g++ cmake git pkg-config
+
+# For Drogon:
+apt-get install -y libjsoncpp-dev uuid-dev zlib1g-dev libyaml-cpp-dev libssl-dev
+apt-get install -y libsqlite3-dev
+
+# For reading WARC from ClueWeb12
+apt-get install -y libboost-iostreams-dev
+
+# Configure and Build
+cmake -S ./ -B ./build/ -DCMAKE_BUILD_TYPE=Release -D CMAKE_C_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ -D CAUSENET_BUILD_DOCS=NO -DCAUSENET_BUILD_TESTS=NO
+cmake --build ./build --config Release --target causenetexe
+EOF
+
+
+########################
+# Production Container #
+########################
+FROM debian:trixie-slim
+
+COPY --from=build /causenet/config.dev.yml /causenet/config.dev.yml
+COPY --from=build /causenet/build/src/causenetexe /usr/local/bin/causenetexe
+
+WORKDIR /causenet
+CMD ["causenetexe"]
