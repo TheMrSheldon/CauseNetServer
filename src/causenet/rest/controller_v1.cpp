@@ -19,7 +19,7 @@ std::unique_ptr<CausenetWrapper> Controller::causenet;
 
 Controller::Controller() noexcept {
 	Controller::causenet = std::make_unique<CausenetWrapper>(
-			std::filesystem::current_path() / ".data" / "causenet-full-supported.causenet"
+			std::filesystem::current_path() / ".data" / "causenet-full-supported-reworked.causenet"
 	);
 	std::cout << "Loaded CauseNet with " << causenet->get().numConcepts() << " nodes" << std::endl;
 }

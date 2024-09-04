@@ -6,11 +6,17 @@
 
 #include <algorithm>
 #include <filesystem>
+#include <format>
 #include <fstream>
 #include <set>
 #include <vector>
 
 using Causenet = causenet::Causenet;
+
+/*int main(int argc, char* argv[]) {
+	auto dataPath = std::filesystem::current_path() / ".data";
+	Causenet::jsonlToBinary(dataPath / "causenet-full.jsonl", dataPath / "causenet-full-supported-reworked.causenet");
+}*/
 
 /*std::string getWikipediaPermalink(std::string curId, std::string timestamp) {
 	auto baseUrl = "https://en.wikipedia.org/w";
@@ -70,7 +76,7 @@ int main() {
 
 int main() {
 	// Set HTTP listener address and port
-	drogon::app().addListener("0.0.0.0", 8080);
+	drogon::app().addListener("0.0.0.0", 8432);
 	// Load config file
 	drogon::app().loadConfigFile("config.dev.yml");
 	// Run HTTP framework,the method will block in the internal event loop
@@ -98,7 +104,7 @@ int main() {
  */
 
 /**
- * Stepweise approach for the processing steps
+ * Stepwise approach for the processing steps
  * 
  */
 

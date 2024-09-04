@@ -7,16 +7,9 @@
 #include <vector>
 
 #include "../utils/generator.hpp"
+#include "./support.hpp"
 
 namespace causenet {
-	enum class SourceType : std::uint8_t { WikipediaInfobox, WikipediaList, WikipediaSentence, ClueWeb12Sentence };
-
-	struct Support {
-		SourceType sourceTypeId;
-		std::string id;
-		std::string content;
-	};
-
 	struct CausenetFile;
 	class Causenet final {
 	private:
@@ -35,7 +28,7 @@ namespace causenet {
 		std::vector<Support> getSupport(size_t causeIdx, size_t effectIdx) const noexcept;
 
 		static Causenet fromFile(const std::filesystem::path& path);
-		static void jsonlToBinary(const std::filesystem::path& inJsonl, std::filesystem::path& outBinary);
+		static void jsonlToBinary(const std::filesystem::path& inJsonl, const std::filesystem::path& outBinary);
 	};
 } // namespace causenet
 
