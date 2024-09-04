@@ -35,6 +35,12 @@ EOF
 ########################
 FROM debian:trixie-slim
 
+ENV DEBIAN_FRONTEND=noninteractive
+RUN <<EOF
+apt-get update
+apt-get install -y libboost-iostreams-dev libjsoncpp-dev libyaml-cpp-dev libsqlite3-dev
+EOF
+
 COPY --from=build /causenet/config.dev.yml /causenet/config.dev.yml
 COPY --from=build /causenet/build/src/causenetexe /usr/local/bin/causenetexe
 
