@@ -21,7 +21,7 @@ Controller::Controller() noexcept {
 	Controller::causenet = std::make_unique<CausenetWrapper>(
 			std::filesystem::current_path() / ".data" / "causenet-full-supported-reworked.causenet"
 	);
-	std::cout << "Loaded CauseNet with " << causenet->get().numConcepts() << " nodes" << std::endl;
+	LOG_INFO << "Loaded CauseNet with " << causenet->get().numConcepts() << " nodes";
 }
 
 void Controller::index(const drogon::HttpRequestPtr& req, DRCallback&& callback) {

@@ -75,6 +75,7 @@ int main() {
 #include <causenet/rest/controller_v1.hpp>
 
 int main() {
+	drogon::app().setLogLevel(trantor::Logger::LogLevel::kTrace);
 	// Set HTTP listener address and port
 	drogon::app().addListener("0.0.0.0", 8432);
 	// Load config file

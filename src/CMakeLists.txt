@@ -37,7 +37,7 @@ endif()
 ##########################################################################################
 # Drogon
 set(BUILD_YAML_CONFIG ON)
-FetchContent_Declare(drogon GIT_REPOSITORY https://github.com/drogonframework/drogon.git GIT_TAG v1.9.3)
+FetchContent_Declare(drogon GIT_REPOSITORY https://github.com/drogonframework/drogon.git GIT_TAG v1.9.6)
 FetchContent_MakeAvailable(drogon)
 target_link_libraries(causenet PUBLIC drogon)
 add_dependencies(causenet drogon_ctl)  # Add dependency to their commandline tool since it will be part of our build process
